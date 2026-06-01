@@ -8,26 +8,32 @@
 
 /* Custom scrollbar adjustments to fit our dark minimalist layout */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: #020617;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #171717;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, #22d3ee 0%, #a855f7 100%);
+  border-radius: 999px;
+  border: 2px solid #020617;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #22d3ee; /* cyan-400 */
+  background: linear-gradient(180deg, #67e8f9 0%, #c084fc 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: #020617;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  scrollbar-color: #22d3ee #020617;
+  scrollbar-width: thin;
 }
 
 body {
