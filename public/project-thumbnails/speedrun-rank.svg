@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#050816"/>
+  <rect x="180" y="120" width="840" height="520" rx="32" fill="#0f172a"/>
+  <path d="M260 230h680M260 330h680M260 430h680M260 530h680" stroke="#334155" stroke-width="2"/>
+  <text x="280" y="285" font-family="Arial" font-size="42" font-weight="700" fill="#38bdf8">01</text>
+  <text x="280" y="385" font-family="Arial" font-size="42" font-weight="700" fill="#e879f9">02</text>
+  <text x="280" y="485" font-family="Arial" font-size="42" font-weight="700" fill="#f8fafc">03</text>
+  <path d="M390 270h360M390 370h300M390 470h420" stroke="#e2e8f0" stroke-opacity=".48" stroke-width="22" stroke-linecap="round"/>
+  <text x="600" y="720" text-anchor="middle" font-family="Arial" font-size="46" font-weight="700" fill="#f8fafc">Realtime Ranking</text>
+</svg>

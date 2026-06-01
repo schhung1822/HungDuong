@@ -1,0 +1,23 @@
+{
+  "name": "Dương Mạnh Hùng Portfolio",
+  "short_name": "HungDuong",
+  "description": "Portfolio của Dương Mạnh Hùng, Web Developer & Automation Builder.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#020617",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

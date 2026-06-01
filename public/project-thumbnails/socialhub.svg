@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="900" viewBox="0 0 900 900">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="38%" r="66%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity=".95"/>
+      <stop offset="50%" stop-color="#f97316" stop-opacity=".64"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <linearGradient id="s" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#a855f7"/>
+      <stop offset="1" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="#020617"/>
+  <circle cx="450" cy="450" r="370" fill="url(#g)"/>
+  <rect x="160" y="178" width="580" height="410" rx="44" fill="#140918" stroke="url(#s)" stroke-width="8"/>
+  <circle cx="260" cy="348" r="58" fill="#a855f7"/>
+  <circle cx="450" cy="298" r="58" fill="#f97316"/>
+  <circle cx="640" cy="378" r="58" fill="#94a3b8"/>
+  <path d="M310 338 398 312M502 320 586 356M312 384 594 406" stroke="#e2e8f0" stroke-opacity=".45" stroke-width="16" stroke-linecap="round"/>
+  <path d="M232 506h436" stroke="#e2e8f0" stroke-opacity=".45" stroke-width="22" stroke-linecap="round"/>
+  <text x="450" y="760" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="124" font-weight="800" fill="#f8fafc">SH</text>
+</svg>

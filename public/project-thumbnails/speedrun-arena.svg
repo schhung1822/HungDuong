@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#020617"/>
+  <rect x="80" y="80" width="1040" height="600" rx="36" fill="#07111f" stroke="#38bdf8" stroke-opacity=".4"/>
+  <rect x="140" y="150" width="470" height="430" rx="24" fill="#0f172a"/>
+  <rect x="650" y="150" width="390" height="430" rx="24" fill="#111827"/>
+  <path d="M200 230h300M200 300h220M200 370h340M200 440h260" stroke="#e2e8f0" stroke-opacity=".5" stroke-width="20" stroke-linecap="round"/>
+  <path d="M720 300l70 70-70 70M930 300l-70 70 70 70" fill="none" stroke="#38bdf8" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="720" text-anchor="middle" font-family="Arial" font-size="46" font-weight="700" fill="#f8fafc">Coding Arena</text>
+</svg>
