@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { ExternalLink, Github, Cpu, ShieldCheck } from "lucide-react";
 import SectionTitle from "./SectionTitle";
 import ScrollReveal from "./reactbits/ScrollReveal";
@@ -6,12 +7,27 @@ import InfiniteMenu from "./reactbits/InfiniteMenu";
 import { projectsData } from "../data/projects";
 import { projectCopy, useLanguage } from "../i18n";
 
+function getRandomProjects<T>(items: T[], count: number) {
+  return [...items]
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .slice(0, count)
+    .map(({ item }) => item);
+}
+
 export default function Projects() {
   const { language, t } = useLanguage();
+  const randomProjectIds = useMemo(
+    () => getRandomProjects(projectsData, 4).map((project) => project.id),
+    []
+  );
   const projects = projectsData.map((project) => ({
     ...project,
     ...(language === "en" ? projectCopy.en[project.id as keyof typeof projectCopy.en] : {})
   }));
+  const displayedProjects = randomProjectIds
+    .map((id) => projects.find((project) => project.id === id))
+    .filter((project): project is (typeof projects)[number] => Boolean(project));
   const infiniteMenuItems = projects.map((project) => ({
     image: project.thumbnail,
     link: `#project/${project.id}`,
@@ -37,7 +53,7 @@ export default function Projects() {
         </ScrollReveal>
 
         <div className="grid grid-cols-1 gap-5 mt-8 md:grid-cols-2">
-          {projects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <ScrollReveal
               key={project.id}
               origin="bottom"

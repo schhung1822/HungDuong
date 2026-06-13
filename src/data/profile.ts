@@ -24,6 +24,7 @@ export interface Profile {
     email: string;
     github: string;
     linkedin: string;
+    zalo: string;
     facebook: string;
     telegram: string;
   };
@@ -63,6 +64,7 @@ export const profileData: Profile = {
     email: "schhung2143@gmail.com",
     github: "https://github.com/schhung1822",
     linkedin: "https://linkedin.com/in/hungduongmanh",
+    zalo: "https://zalo.me/0379834108/",
     facebook: "https://www.facebook.com/duong.manh.hung.635010",
     telegram: "https://t.me/Leohunq"
   },

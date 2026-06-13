@@ -1,11 +1,12 @@
 import React from "react";
-import { ArrowUp, ArrowUpRight, Facebook, Github, Linkedin, Mail, Send } from "lucide-react";
+import { ArrowUp, ArrowUpRight, Facebook, Github, Mail, Send } from "lucide-react";
+import ZaloIcon from "./icons/ZaloIcon";
 import { profileData } from "../data/profile";
 import { useLanguage } from "../i18n";
 
 const socialLinks = [
   { label: "GitHub", href: profileData.contact.github, icon: Github },
-  { label: "LinkedIn", href: profileData.contact.linkedin, icon: Linkedin },
+  { label: "Zalo", href: profileData.contact.zalo, icon: ZaloIcon },
   { label: "Facebook", href: profileData.contact.facebook, icon: Facebook },
   { label: "Telegram", href: profileData.contact.telegram, icon: Send }
 ];

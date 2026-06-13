@@ -1,6 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import { Mail, Github, Linkedin, Send, MessageSquareCode, Facebook, CheckCircle2, Heart } from "lucide-react";
+import { Mail, Github, Send, MessageSquareCode, Facebook, CheckCircle2, Heart } from "lucide-react";
 import SectionTitle from "./SectionTitle";
+import ZaloIcon from "./icons/ZaloIcon";
 import ScrollReveal from "./reactbits/ScrollReveal";
 import SpotlightCard from "./reactbits/SpotlightCard";
 import { profileData } from "../data/profile";
@@ -15,7 +16,7 @@ export default function Contact() {
       description: "Tôi luôn sẵn sàng tiếp nhận các cơ hội hợp tác phát triển sản phẩm, website, Zalo Mini App hay workflow automation.",
       emailLabel: "GẮN EMAIL TRỰC TIẾP",
       githubLabel: "MÃ NGUỒN CỘNG ĐỒNG",
-      linkedinLabel: "KẾT NỐI CHUYÊN NGHIỆP",
+      zaloLabel: "KẾT NỐI ZALO",
       facebookLabel: "MẠNG XÃ HỘI CÁ NHÂN",
       successTitle: "Gửi Tin Nhắn Thành Công!",
       successDescription: "Cảm ơn bạn đã kết nối. Tin nhắn của bạn đã được lập chỉ mục an toàn. Dương Mạnh Hùng sẽ phản hồi sớm nhất qua điện thoại ho hòm thư",
@@ -42,7 +43,7 @@ export default function Contact() {
       description: "I am open to product, website, Zalo Mini App, and workflow automation collaborations.",
       emailLabel: "DIRECT EMAIL",
       githubLabel: "OPEN SOURCE",
-      linkedinLabel: "PROFESSIONAL NETWORK",
+      zaloLabel: "ZALO CONTACT",
       facebookLabel: "SOCIAL PROFILE",
       successTitle: "Message Sent Successfully!",
       successDescription: "Thanks for reaching out. Your message has been received safely. Duong Manh Hung will reply as soon as possible via",
@@ -165,12 +166,12 @@ export default function Contact() {
 
                   <div className="flex items-center gap-4 py-1.5">
                     <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center">
-                      <Linkedin className="w-5 h-5 text-cyan-400" />
+                      <ZaloIcon className="w-5 h-5 text-cyan-400" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-mono text-slate-500 uppercase">{copy.linkedinLabel}</p>
-                      <a href={profileData.contact.linkedin} target="_blank" rel="noreferrer" className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
-                        Dương Mạnh Hùng
+                      <p className="text-[10px] font-mono text-slate-500 uppercase">{copy.zaloLabel}</p>
+                      <a href={profileData.contact.zalo} target="_blank" rel="noreferrer" className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
+                        zalo.me/0379834108
                       </a>
                     </div>
                   </div>
