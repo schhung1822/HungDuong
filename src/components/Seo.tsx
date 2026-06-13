@@ -19,6 +19,9 @@ const baseCopy = {
   }
 };
 
+const defaultPreviewImage = "/seo.webp";
+const defaultPreviewAlt = "DÆ°Æ¡ng Máº¡nh HÃ¹ng Portfolio preview";
+
 function setMeta(name: string, content: string, property = false) {
   const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
   let element = document.head.querySelector<HTMLMetaElement>(selector);
@@ -46,7 +49,8 @@ export default function Seo({ projectId }: SeoProps) {
 
     const title = project ? `${project.title} | ${base.title}` : base.title;
     const description = project?.description || base.description;
-    const image = project?.thumbnail || "/avatar.webp";
+    const image = project?.thumbnail || defaultPreviewImage;
+    const imageAlt = project ? `${project.title} preview` : defaultPreviewAlt;
 
     document.documentElement.lang = language;
     document.title = title;
@@ -54,10 +58,12 @@ export default function Seo({ projectId }: SeoProps) {
     setMeta("og:title", title, true);
     setMeta("og:description", description, true);
     setMeta("og:image", image, true);
+    setMeta("og:image:alt", imageAlt, true);
     setMeta("og:locale", language === "vi" ? "vi_VN" : "en_US", true);
     setMeta("twitter:title", title);
     setMeta("twitter:description", description);
     setMeta("twitter:image", image);
+    setMeta("twitter:image:alt", imageAlt);
   }, [language, projectId]);
 
   return null;
