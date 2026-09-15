@@ -10,6 +10,7 @@ import ProjectDetail from "./components/ProjectDetail";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 export default function App() {
   const [hash, setHash] = useState(window.location.hash);
@@ -39,14 +40,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#050505] text-neutral-200 flex flex-col font-sans selection:bg-cyan-500/20 selection:text-cyan-400 overflow-x-hidden antialiased">
-      {/* Background radial soft light to frame application */}
-      <div className="absolute inset-0 dot-grid z-0 pointer-events-none opacity-60" />
-      
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none overflow-hidden z-0">
-        <div className="aurora-bg opacity-70" />
-        <div className="aurora-bg-2 opacity-70" />
-      </div>
+    <div className="relative min-h-screen bg-neutral-950 text-neutral-200 flex flex-col font-sans selection:bg-white selection:text-black overflow-x-hidden antialiased">
 
       <Seo projectId={projectDetailMatch ? decodeURIComponent(projectDetailMatch[1]) : undefined} />
 
@@ -85,6 +79,9 @@ export default function App() {
 
       {/* Footer navigation and credentials */}
       <Footer />
+
+      {/* Floating language toggle */}
+      <LanguageSwitcher />
     </div>
   );
 }

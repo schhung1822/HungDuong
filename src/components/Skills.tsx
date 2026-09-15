@@ -14,19 +14,19 @@ export default function Skills() {
   const getCategoryIcon = (index: number) => {
     switch (index) {
       case 0:
-        return <Laptop className="w-5 h-5 text-cyan-400" />;
+        return <Laptop className="w-4 h-4" />;
       case 1:
-        return <Database className="w-5 h-5 text-purple-400" />;
+        return <Database className="w-4 h-4" />;
       case 2:
-        return <Wrench className="w-5 h-5 text-emerald-400" />;
+        return <Wrench className="w-4 h-4" />;
       case 3:
       default:
-        return <Brain className="w-5 h-5 text-pink-400" />;
+        return <Brain className="w-4 h-4" />;
     }
   };
 
   return (
-    <section id="skills" className="py-20 bg-slate-950 px-6 border-t border-slate-900 scroll-mt-20">
+    <section id="skills" className="py-20 bg-neutral-950 px-6 border-t border-neutral-900 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <SectionTitle 
           number="02" 
@@ -40,8 +40,8 @@ export default function Skills() {
             onClick={() => setActiveCategory(null)}
             className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all duration-200 ${
               activeCategory === null
-                ? "bg-cyan-500 text-slate-950 font-bold shadow-md shadow-cyan-500/10"
-                : "bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800"
+                ? "bg-white text-black font-bold border border-white"
+                : "text-neutral-400 hover:text-white border border-neutral-800 hover:border-neutral-600"
             }`}
           >
             {t("skills.all")}
@@ -53,8 +53,8 @@ export default function Skills() {
               onClick={() => setActiveCategory(index)}
               className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider flex items-center gap-2 transition-all duration-200 ${
                 activeCategory === index
-                  ? "bg-purple-600 text-slate-50 font-bold shadow-md shadow-purple-600/10"
-                  : "bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800"
+                  ? "bg-white text-black font-bold border border-white"
+                  : "text-neutral-400 hover:text-white border border-neutral-800 hover:border-neutral-600"
               }`}
             >
               {getCategoryIcon(index)}
@@ -75,18 +75,14 @@ export default function Skills() {
                 delay={catIdx * 100}
                 className="w-full"
               >
-                <SpotlightCard 
-                  className="p-8 h-full bg-slate-900/[0.25] backdrop-blur-md"
-                  spotlightColor="rgba(139, 92, 246, 0.08)"
-                  borderColor="rgba(139, 92, 246, 0.15)"
-                >
+                <SpotlightCard className="p-8 h-full">
                   <div className="space-y-6">
                     {/* Header */}
-                    <div className="flex items-center gap-3 border-b border-slate-900/80 pb-4">
-                      <div className="p-2 rounded-xl bg-slate-950 border border-slate-800">
+                    <div className="flex items-center gap-3 border-b border-neutral-800/70 pb-4">
+                      <div className="p-2 rounded-xl bg-neutral-950 border border-neutral-800 text-neutral-200">
                         {getCategoryIcon(category.originalIndex)}
                       </div>
-                      <h3 className="font-sans text-base sm:text-lg font-bold text-slate-200">
+                      <h3 className="font-sans text-base sm:text-lg font-bold text-neutral-200">
                         {category.title}
                       </h3>
                     </div>
@@ -96,17 +92,17 @@ export default function Skills() {
                       {category.items.map((skill) => (
                         <div key={skill.name} className="group space-y-1.5">
                           <div className="flex justify-between items-center text-xs">
-                            <span className="font-mono text-slate-300 group-hover:text-cyan-400 font-medium transition-colors flex items-center gap-1.5">
-                              <Code2 className="w-3.5 h-3.5 text-slate-500 group-hover:text-cyan-400/80" />
+                            <span className="font-mono text-neutral-300 group-hover:text-white font-medium transition-colors flex items-center gap-1.5">
+                              <Code2 className="w-3.5 h-3.5 text-neutral-600 group-hover:text-neutral-300" />
                               {skill.name}
                             </span>
-                            <span className="font-mono text-slate-500">{skill.level}%</span>
+                            <span className="font-mono text-neutral-500">{skill.level}%</span>
                           </div>
                           
                           {/* Visual progress bar bar design */}
-                          <div className="h-1.5 w-full bg-slate-950 rounded-full overflow-hidden border border-slate-900/50">
-                            <div 
-                              className="h-full bg-gradient-to-r from-cyan-500 to-purple-600 group-hover:from-cyan-400 group-hover:to-purple-500 rounded-full transition-all duration-1000 ease-out"
+                          <div className="h-1 w-full bg-neutral-800 rounded-full overflow-hidden">
+                            <div
+                              className="h-full bg-neutral-400 group-hover:bg-white rounded-full transition-all duration-1000 ease-out"
                               style={{ width: `${skill.level}%` }}
                             />
                           </div>

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import type { CSSProperties } from "react";
 
-const DEFAULT_INNER_GRADIENT = "linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)";
+const DEFAULT_INNER_GRADIENT = "linear-gradient(145deg,#4040408c 0%,#a3a3a344 100%)";
 const KEYFRAMES_ID = "pc-keyframes";
 
 const ANIMATION_CONFIG = {
@@ -51,7 +51,7 @@ export default function ProfileCard({
   grainUrl,
   innerGradient,
   behindGlowEnabled = true,
-  behindGlowColor = "rgba(125, 190, 255, 0.67)",
+  behindGlowColor = "rgba(255, 255, 255, 0.2)",
   behindGlowSize = "50%",
   className = "",
   enableTilt = true,
@@ -270,12 +270,12 @@ export default function ProfileCard({
         "--background-x": "50%",
         "--background-y": "50%",
         "--card-radius": cardRadius,
-        "--sunpillar-clr-1": "hsl(2, 100%, 73%)",
-        "--sunpillar-clr-2": "hsl(53, 100%, 69%)",
-        "--sunpillar-clr-3": "hsl(93, 100%, 69%)",
-        "--sunpillar-clr-4": "hsl(176, 100%, 76%)",
-        "--sunpillar-clr-5": "hsl(228, 100%, 74%)",
-        "--sunpillar-clr-6": "hsl(283, 100%, 73%)"
+        "--sunpillar-clr-1": "hsl(0, 0%, 72%)",
+        "--sunpillar-clr-2": "hsl(0, 0%, 88%)",
+        "--sunpillar-clr-3": "hsl(0, 0%, 60%)",
+        "--sunpillar-clr-4": "hsl(0, 0%, 80%)",
+        "--sunpillar-clr-5": "hsl(0, 0%, 66%)",
+        "--sunpillar-clr-6": "hsl(0, 0%, 92%)"
       }) as CSSProperties,
     [behindGlowColor, behindGlowSize, grainUrl, iconUrl, innerGradient]
   );
@@ -300,7 +300,7 @@ export default function ProfileCard({
         var(--sunpillar-clr-5) 25%,
         var(--sunpillar-clr-6) 30%,
         var(--sunpillar-clr-1) 35%),
-      repeating-linear-gradient(-45deg,#0e152e 0%,hsl(180,10%,60%) 3.8%,hsl(180,29%,66%) 4.5%,hsl(180,10%,60%) 5.2%,#0e152e 10%,#0e152e 12%),
+      repeating-linear-gradient(-45deg,#171717 0%,hsl(0,0%,60%) 3.8%,hsl(0,0%,68%) 4.5%,hsl(0,0%,60%) 5.2%,#171717 10%,#171717 12%),
       radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y),hsla(0,0%,0%,0.1) 12%,hsla(0,0%,0%,0.15) 20%,hsla(0,0%,0%,0.25) 120%)
     `,
     gridArea: "1 / -1",
@@ -310,7 +310,7 @@ export default function ProfileCard({
 
   const glareStyle: CSSProperties = {
     transform: "translate3d(0, 0, 1.1px)",
-    backgroundImage: "radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsl(248, 25%, 80%) 12%, hsla(207, 40%, 30%, 0.8) 90%)",
+    backgroundImage: "radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 80%) 12%, hsla(0, 0%, 25%, 0.8) 90%)",
     mixBlendMode: "overlay",
     filter: "brightness(0.8) contrast(1.2)",
     zIndex: 4,

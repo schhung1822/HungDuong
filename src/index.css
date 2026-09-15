@@ -6,53 +6,39 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* Custom scrollbar adjustments to fit our dark minimalist layout */
+/* Monochrome scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #22d3ee 0%, #a855f7 100%);
+  background: #404040;
   border-radius: 999px;
-  border: 2px solid #020617;
+  border: 2px solid #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #67e8f9 0%, #c084fc 100%);
+  background: #737373;
 }
 
 ::-webkit-scrollbar-corner {
-  background: #020617;
+  background: #0a0a0a;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
-  scrollbar-color: #22d3ee #020617;
+  scrollbar-color: #404040 #0a0a0a;
   scrollbar-width: thin;
 }
 
 body {
-  background-color: #050505;
+  background-color: #0a0a0a;
   color: #e5e5e5;
-}
-
-@keyframes cta-shine-sweep {
-  0% {
-    transform: translateX(0) skewX(-18deg);
-  }
-
-  50% {
-    transform: translateX(220px) skewX(-18deg);
-  }
-
-  100% {
-    transform: translateX(0) skewX(-18deg);
-  }
 }
 
 @keyframes fadeIn {
@@ -65,56 +51,4 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.cta-shine {
-  animation: cta-shine-sweep 2.8s ease-in-out infinite;
-}
-
-/* Custom design utilities from Sleek Interface theme */
-.glass-card {
-  background: rgba(23, 23, 23, 0.6) !important;
-  backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
-
-.cyan-glow {
-  box-shadow: 0 0 24px rgba(34, 211, 238, 0.12) !important;
-}
-
-.purple-glow {
-  box-shadow: 0 0 24px rgba(168, 85, 247, 0.12) !important;
-}
-
-.gradient-text {
-  background: linear-gradient(135deg, #22d3ee 0%, #a855f7 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-.dot-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
-  background-size: 24px 24px !important;
-}
-
-.aurora-bg {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(34, 211, 238, 0.08) 0%, transparent 70%);
-  top: -200px;
-  left: -200px;
-  filter: blur(80px);
-  z-index: -1;
-}
-
-.aurora-bg-2 {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
-  bottom: -100px;
-  right: -100px;
-  filter: blur(80px);
-  z-index: -1;
 }

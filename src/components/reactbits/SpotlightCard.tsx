@@ -4,8 +4,8 @@ import type { MouseEvent, ReactNode } from "react";
 interface SpotlightCardProps {
   children: ReactNode;
   className?: string;
-  spotlightColor?: string; // e.g. "rgba(6, 182, 212, 0.15)" (Cyan glow)
-  borderColor?: string; // e.g. "rgba(139, 92, 246, 0.3)" (Purple border)
+  spotlightColor?: string; // e.g. "rgba(255, 255, 255, 0.05)"
+  borderColor?: string; // e.g. "rgba(255, 255, 255, 0.25)"
   id?: string;
 }
 
@@ -16,8 +16,8 @@ interface SpotlightCardProps {
 export default function SpotlightCard({
   children,
   className = "",
-  spotlightColor = "rgba(6, 182, 212, 0.15)", // Default cyan spotlight
-  borderColor = "rgba(139, 92, 246, 0.35)", // Default purple-blue border glow
+  spotlightColor = "rgba(255, 255, 255, 0.05)", // Default soft white spotlight
+  borderColor = "rgba(255, 255, 255, 0.25)", // Default white border glow
   id
 }: SpotlightCardProps) {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
@@ -39,7 +39,7 @@ export default function SpotlightCard({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsFocused(true)}
       onMouseLeave={() => setIsFocused(false)}
-      className={`relative rounded-3xl overflow-hidden border border-slate-800/60 bg-slate-900/60 backdrop-blur-md transition-all duration-300 hover:border-slate-700/80 ${className}`}
+      className={`relative rounded-2xl overflow-hidden border border-neutral-800/70 bg-neutral-900/30 transition-colors duration-300 hover:border-neutral-700 ${className}`}
     >
       {/* Spotlight overlay */}
       {isFocused && (

@@ -12,13 +12,13 @@ export default function SectionTitle({ number, title, subtitle, id }: SectionTit
     <ScrollReveal origin="left" className="mb-12 md:mb-16">
       <div id={id} className="flex flex-col gap-2">
         <div className="flex items-center gap-3">
-          <span className="font-mono text-cyan-400 text-sm tracking-widest font-semibold md:text-base">
-            [{number}]
+          <span className="font-mono text-neutral-500 text-sm tracking-widest font-medium md:text-base">
+            {number}
           </span>
-          <div className="h-px bg-gradient-to-r from-slate-800 to-transparent flex-1" />
+          <div className="h-px bg-neutral-800 flex-1" />
         </div>
         <div className="flex flex-col gap-1 md:flex-row md:items-end md:gap-4 md:justify-between">
-          <h2 className="text-3xl font-sans tracking-tight font-bold text-slate-100 md:text-4xl bg-gradient-to-r from-slate-100 via-slate-200 to-slate-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-sans tracking-tight font-bold text-white md:text-4xl">
             {title}
           </h2>
         </div>

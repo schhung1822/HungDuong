@@ -112,7 +112,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-950 px-6 border-t border-slate-900 scroll-mt-20">
+    <section id="contact" className="py-20 bg-neutral-950 px-6 border-t border-neutral-900 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <SectionTitle 
           number="06" 
@@ -124,65 +124,61 @@ export default function Contact() {
           {/* Social Cards Columns - Left side */}
           <div className="lg:col-span-5 space-y-6">
             <ScrollReveal origin="left" className="space-y-4">
-              <h3 className="text-xl font-sans font-bold text-slate-100 flex items-center gap-2">
+              <h3 className="text-xl font-sans font-bold text-neutral-100 flex items-center gap-2">
                 {copy.heading}
               </h3>
-              <p className="text-sm sm:text-base text-slate-400 leading-relaxed font-sans">
+              <p className="text-sm sm:text-base text-neutral-400 leading-relaxed font-sans">
                 {copy.description}
               </p>
             </ScrollReveal>
 
             {/* Direct Coordinates Widget */}
             <ScrollReveal origin="left" delay={150} className="space-y-4">
-              <SpotlightCard 
-                className="p-6 bg-slate-900/[0.1] border-slate-900"
-                spotlightColor="rgba(6, 182, 212, 0.08)"
-                borderColor="rgba(6, 182, 212, 0.15)"
-              >
+              <SpotlightCard className="p-6">
                 <div className="space-y-4 font-sans text-xs sm:text-sm">
                   <div className="flex items-center gap-4 py-1.5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center">
-                      <Mail className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center">
+                      <Mail className="w-5 h-5 text-neutral-300" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-mono text-slate-500 uppercase">{copy.emailLabel}</p>
-                      <a href={`mailto:${profileData.contact.email}`} className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
+                      <p className="text-[10px] font-mono text-neutral-500 uppercase">{copy.emailLabel}</p>
+                      <a href={`mailto:${profileData.contact.email}`} className="text-neutral-200 hover:text-white font-medium transition-colors">
                         {profileData.contact.email}
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4 py-1.5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center">
-                      <Github className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center">
+                      <Github className="w-5 h-5 text-neutral-300" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-mono text-slate-500 uppercase">{copy.githubLabel}</p>
-                      <a href={profileData.contact.github} target="_blank" rel="noreferrer" className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
+                      <p className="text-[10px] font-mono text-neutral-500 uppercase">{copy.githubLabel}</p>
+                      <a href={profileData.contact.github} target="_blank" rel="noreferrer" className="text-neutral-200 hover:text-white font-medium transition-colors">
                         @schhung1822
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4 py-1.5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center">
-                      <ZaloIcon className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center">
+                      <ZaloIcon className="w-5 h-5 text-neutral-300" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-mono text-slate-500 uppercase">{copy.zaloLabel}</p>
-                      <a href={profileData.contact.zalo} target="_blank" rel="noreferrer" className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
+                      <p className="text-[10px] font-mono text-neutral-500 uppercase">{copy.zaloLabel}</p>
+                      <a href={profileData.contact.zalo} target="_blank" rel="noreferrer" className="text-neutral-200 hover:text-white font-medium transition-colors">
                         zalo.me/0379834108
                       </a>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4 py-1.5">
-                    <div className="w-10 h-10 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center">
-                      <Facebook className="w-5 h-5 text-cyan-400" />
+                    <div className="w-10 h-10 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center">
+                      <Facebook className="w-5 h-5 text-neutral-300" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-mono text-slate-500 uppercase">{copy.facebookLabel}</p>
-                      <a href={profileData.contact.facebook} target="_blank" rel="noreferrer" className="text-slate-200 hover:text-cyan-400 font-medium transition-colors">
+                      <p className="text-[10px] font-mono text-neutral-500 uppercase">{copy.facebookLabel}</p>
+                      <a href={profileData.contact.facebook} target="_blank" rel="noreferrer" className="text-neutral-200 hover:text-white font-medium transition-colors">
                         fb.com/duong.manh.hung.635010
                       </a>
                     </div>
@@ -195,38 +191,34 @@ export default function Contact() {
           {/* High-Fidelity Form - Right side */}
           <div className="lg:col-span-7">
             <ScrollReveal origin="bottom" delay={200} className="h-full">
-              <SpotlightCard 
-                className="p-8 bg-slate-900/[0.15] border-purple-500/10"
-                spotlightColor="rgba(139, 92, 246, 0.12)"
-                borderColor="rgba(139, 92, 246, 0.2)"
-              >
+              <SpotlightCard className="p-8">
                 {formStatus === "success" ? (
                   <div className="py-12 flex flex-col items-center text-center gap-4 font-sans">
-                    <div className="w-16 h-16 rounded-full bg-emerald-950 border border-emerald-500/20 flex items-center justify-center text-emerald-400 animate-bounce">
+                    <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black">
                       <CheckCircle2 className="w-8 h-8" />
                     </div>
-                    <h4 className="text-2xl font-bold text-slate-100">{copy.successTitle}</h4>
-                    <p className="text-slate-400 max-w-md text-sm leading-relaxed">
-                      {copy.successDescription} <strong className="text-cyan-400">{profileData.contact.email}</strong>.
+                    <h4 className="text-2xl font-bold text-neutral-100">{copy.successTitle}</h4>
+                    <p className="text-neutral-400 max-w-md text-sm leading-relaxed">
+                      {copy.successDescription} <strong className="text-neutral-300">{profileData.contact.email}</strong>.
                     </p>
                     <button
                       onClick={() => setFormStatus("idle")}
-                      className="mt-6 px-6 py-2 rounded-full font-bold text-xs bg-slate-950 hover:bg-slate-900 text-slate-300 border border-slate-800"
+                      className="mt-6 px-6 py-2 rounded-full font-bold text-xs bg-neutral-950 hover:bg-neutral-900 text-neutral-300 border border-neutral-800"
                     >
                       {copy.newMessage}
                     </button>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6 text-left font-sans">
-                    <div className="flex items-center gap-2 pb-3 border-b border-slate-900/80 mb-2">
-                      <MessageSquareCode className="w-5 h-5 text-cyan-400" />
-                      <h4 className="text-base font-bold text-slate-200 font-mono tracking-wide uppercase">{copy.formTitle}</h4>
+                    <div className="flex items-center gap-2 pb-3 border-b border-neutral-900/80 mb-2">
+                      <MessageSquareCode className="w-5 h-5 text-neutral-300" />
+                      <h4 className="text-base font-bold text-neutral-200 font-mono tracking-wide uppercase">{copy.formTitle}</h4>
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div className="space-y-2">
-                        <label htmlFor="name" className="block text-xs font-mono text-slate-500 uppercase tracking-widest">
-                          {copy.name} <span className="text-red-500">*</span>
+                        <label htmlFor="name" className="block text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                          {copy.name} <span className="text-neutral-600">*</span>
                         </label>
                         <input
                           id="name"
@@ -236,12 +228,12 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handeChange}
                           placeholder={copy.namePlaceholder}
-                          className="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-3 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-xs text-neutral-300 focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 transition-colors"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="brand" className="block text-xs font-mono text-slate-500 uppercase tracking-widest">
+                        <label htmlFor="brand" className="block text-xs font-mono text-neutral-500 uppercase tracking-widest">
                           {copy.brand}
                         </label>
                         <input
@@ -251,15 +243,15 @@ export default function Contact() {
                           value={formData.brand}
                           onChange={handeChange}
                           placeholder={copy.brandPlaceholder}
-                          className="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-3 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-xs text-neutral-300 focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 transition-colors"
                         />
                       </div>
                     </div>
 
                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div className="space-y-2">
-                        <label htmlFor="email" className="block text-xs font-mono text-slate-500 uppercase tracking-widest">
-                          {copy.email} <span className="text-red-500">*</span>
+                        <label htmlFor="email" className="block text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                          {copy.email} <span className="text-neutral-600">*</span>
                         </label>
                         <input
                           id="email"
@@ -269,12 +261,12 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handeChange}
                           placeholder="example@gmail.com"
-                          className="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-3 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-xs text-neutral-300 focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 transition-colors"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="phone" className="block text-xs font-mono text-slate-500 uppercase tracking-widest">
+                        <label htmlFor="phone" className="block text-xs font-mono text-neutral-500 uppercase tracking-widest">
                           {copy.phone}
                         </label>
                         <input
@@ -284,13 +276,13 @@ export default function Contact() {
                           value={formData.phone}
                           onChange={handeChange}
                           placeholder={copy.phonePlaceholder}
-                          className="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-3 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors"
+                          className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-xs text-neutral-300 focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 transition-colors"
                         />
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="subject" className="block text-xs font-mono text-slate-500 uppercase tracking-widest">
+                      <label htmlFor="subject" className="block text-xs font-mono text-neutral-500 uppercase tracking-widest">
                         {copy.subject}
                       </label>
                       <input
@@ -300,13 +292,13 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handeChange}
                         placeholder={copy.subjectPlaceholder}
-                        className="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-3 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors"
+                        className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-xs text-neutral-300 focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 transition-colors"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="message" className="block text-xs font-mono text-slate-500 uppercase tracking-widest">
-                        {copy.message} <span className="text-red-500">*</span>
+                      <label htmlFor="message" className="block text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                        {copy.message} <span className="text-neutral-600">*</span>
                       </label>
                       <textarea
                         id="message"
@@ -316,13 +308,13 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handeChange}
                         placeholder={copy.messagePlaceholder}
-                        className="w-full bg-slate-950 border border-slate-900 rounded-xl px-4 py-3 text-xs text-slate-300 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+                        className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-xs text-neutral-300 focus:outline-none focus:border-neutral-500 placeholder:text-neutral-600 transition-colors resize-none"
                       />
                     </div>
 
                     {/* Submit action */}
                     {formStatus === "error" && (
-                      <div className="rounded-xl border border-red-500/20 bg-red-950/20 px-4 py-3 text-xs leading-relaxed text-red-200">
+                      <div className="rounded-xl border border-neutral-600 bg-neutral-900 px-4 py-3 text-xs leading-relaxed text-neutral-100">
                         {copy.error}
                       </div>
                     )}
@@ -330,11 +322,11 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={formStatus === "submitting"}
-                      className="group flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-slate-950 font-bold text-xs px-6 py-3.5 rounded-xl transition-all duration-300 shadow-md shadow-cyan-500/10 cursor-pointer w-full"
+                      className="group flex items-center justify-center gap-2 bg-white hover:bg-neutral-200 text-black font-bold text-xs px-6 py-3.5 rounded-xl transition-colors duration-200 cursor-pointer w-full disabled:opacity-70"
                     >
                       {formStatus === "submitting" ? (
                         <span className="flex items-center gap-2">
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-slate-950" fill="none" viewBox="0 0 24 24">
+                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-black" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                           </svg>

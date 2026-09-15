@@ -1141,11 +1141,11 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
           }
         `}
           >
-            <span className="mb-3 inline-flex rounded-full border border-cyan-500/20 bg-cyan-950/50 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-cyan-300">
+            <span className="mb-3 inline-flex rounded-full border border-neutral-700 bg-neutral-950/70 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-neutral-300">
               {activeItem.badge}
             </span>
 
-            <h2 className="select-none text-xl font-black leading-tight text-slate-50 drop-shadow-[0_10px_30px_rgba(0,0,0,0.55)] sm:text-2xl md:text-3xl lg:text-4xl">
+            <h2 className="select-none text-xl font-black leading-tight text-neutral-50 drop-shadow-[0_10px_30px_rgba(0,0,0,0.55)] sm:text-2xl md:text-3xl lg:text-4xl">
               {activeItem.title}
             </h2>
           </div>
@@ -1167,17 +1167,17 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
           place-items-center
           rounded-full
           border
-          border-cyan-300/30
-          bg-cyan-400
+          border-white
+          bg-white
           text-2xl
           font-bold
           leading-none
-          text-slate-950
+          text-black
           shadow-xl
-          shadow-cyan-500/25
+          shadow-black/40
           transition-all
           duration-200
-          hover:bg-cyan-300
+          hover:bg-neutral-200
           hover:scale-105
           ${
             isMoving
@@ -1214,7 +1214,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [], scale = 1.0 }) => {
           }
         `}
           >
-            <p className="select-none font-sans text-sm leading-7 text-slate-300 drop-shadow-[0_10px_30px_rgba(0,0,0,0.55)] sm:text-base">
+            <p className="select-none font-sans text-sm leading-7 text-neutral-300 drop-shadow-[0_10px_30px_rgba(0,0,0,0.55)] sm:text-base">
               {activeItem.description}
             </p>
           </div>
