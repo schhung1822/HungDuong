@@ -3,6 +3,7 @@ import { Github, Linkedin } from "lucide-react";
 import DotGridIcon from "./icons/DotGridIcon";
 import DotMenuIcon from "./icons/DotMenuIcon";
 import { pill, surface } from "./surface";
+import { pageContainer } from "./layout";
 import { profileData } from "../data/profile";
 import { useLanguage } from "../i18n";
 
@@ -18,8 +19,7 @@ export default function Header() {
 
   const menuItems = [
     { label: t("nav.about"), href: "#about", id: "about" },
-    { label: t("nav.skills"), href: "#skills", id: "skills" },
-    { label: t("nav.featured"), href: "#featured", id: "featured" },
+    { label: t("nav.services"), href: "#services", id: "services" },
     { label: t("nav.projects"), href: "#projects", id: "projects" },
     { label: t("nav.experience"), href: "#experience", id: "experience" },
     { label: t("nav.contact"), href: "#contact", id: "contact" }
@@ -114,7 +114,7 @@ export default function Header() {
         isScrolled ? "bg-linear-to-b from-neutral-950/90 to-transparent py-3" : "py-3 sm:py-5"
       }`}
     >
-      <div ref={menuRef} className="relative mx-auto max-w-[1600px] px-4 sm:px-8">
+      <div ref={menuRef} className={`relative ${pageContainer}`}>
         {/* Mobile bar: menu toggle · logo · contact */}
         <div className={`flex h-14 items-center justify-between rounded-2xl px-1.5 lg:hidden ${surface}`}>
           <button

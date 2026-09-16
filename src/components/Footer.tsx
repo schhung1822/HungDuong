@@ -3,6 +3,7 @@ import { ArrowUp, Facebook, Github, Linkedin, Mail, Send } from "lucide-react";
 import ZaloIcon from "./icons/ZaloIcon";
 import { profileData } from "../data/profile";
 import { useLanguage } from "../i18n";
+import { pageContainer } from "./layout";
 
 const socialLinks = [
   { label: "GitHub", href: profileData.contact.github, icon: Github },
@@ -19,8 +20,7 @@ export default function Footer() {
   const { language, setLanguage, t } = useLanguage();
   const footerLinks = [
     { label: t("nav.about"), href: "#about" },
-    { label: t("nav.skills"), href: "#skills" },
-    { label: t("nav.featured"), href: "#featured" },
+    { label: t("nav.services"), href: "#services" },
     { label: t("nav.projects"), href: "#projects" },
     { label: t("nav.experience"), href: "#experience" },
     { label: t("nav.contact"), href: "#contact" }
@@ -34,8 +34,8 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-neutral-950 px-4 sm:px-6">
-      <div className="mx-auto max-w-[1540px] px-4">
+    <footer className="relative overflow-hidden border-t border-white/[0.06] bg-neutral-950">
+      <div className={pageContainer}>
         {/* Brand + socials */}
         <div className="flex flex-col gap-8 pb-10 pt-12 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
@@ -130,7 +130,7 @@ export default function Footer() {
       </div>
 
       {/* Oversized wordmark — SVG textLength keeps it exactly container-wide at every screen size */}
-      <div aria-hidden="true" className="mx-auto max-w-[1540px] select-none pb-10 pt-16 sm:pt-24">
+      <div aria-hidden="true" className={`${pageContainer} select-none pb-10 pt-16 sm:pt-24`}>
         <svg viewBox="0 0 1000 132" className="block w-full overflow-visible">
           <defs>
             <linearGradient id="footer-wordmark-fade" x1="0" y1="0" x2="0" y2="1">

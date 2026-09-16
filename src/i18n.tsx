@@ -5,8 +5,7 @@ export type Language = "vi" | "en";
 
 type TranslationKey =
   | "nav.about"
-  | "nav.skills"
-  | "nav.featured"
+  | "nav.services"
   | "nav.projects"
   | "nav.experience"
   | "nav.contact"
@@ -14,6 +13,9 @@ type TranslationKey =
   | "header.directContact"
   | "hero.badge"
   | "hero.greeting"
+  | "hero.headline"
+  | "hero.description"
+  | "hero.scroll"
   | "hero.explore"
   | "hero.contact"
   | "about.title"
@@ -22,13 +24,6 @@ type TranslationKey =
   | "about.years"
   | "about.projects"
   | "about.satisfaction"
-  | "skills.title"
-  | "skills.all"
-  | "featured.title"
-  | "featured.problem"
-  | "featured.impact"
-  | "featured.demo"
-  | "featured.detail"
   | "projects.title"
   | "projects.detail"
   | "experience.title"
@@ -53,16 +48,19 @@ type TranslationKey =
 const dictionaries: Record<Language, Record<TranslationKey, string>> = {
   vi: {
     "nav.about": "Về tôi",
-    "nav.skills": "Kỹ năng",
-    "nav.featured": "Sản phẩm nổi bật",
+    "nav.services": "Dịch vụ",
     "nav.projects": "Dự án",
     "nav.experience": "Kinh nghiệm",
     "nav.contact": "Liên hệ",
     "header.contact": "Liên hệ ngay",
     "header.directContact": "Liên hệ trực tiếp",
-    "hero.badge": "SẴN SÀNG CHO CÁC SẢN PHẨM KHỔNG LỒ",
+    "hero.badge": "FRONTEND DEVELOPER / AUTOMATION BUILDER",
     "hero.greeting": "Xin chào, Tôi là",
-    "hero.explore": "Khám phá sản phẩm",
+    "hero.headline": "Tôi tạo ra sản phẩm web nhanh, dễ mở rộng với trải nghiệm chỉn chu và giải pháp automation thực tế.",
+    "hero.description":
+      "Tôi đồng hành từ giao diện, kiến trúc frontend đến tích hợp API và triển khai, tập trung vào những sản phẩm đẹp, hiệu quả và giải quyết đúng nhu cầu vận hành.",
+    "hero.scroll": "Cuộn",
+    "hero.explore": "Bắt đầu dự án",
     "hero.contact": "Liên hệ trực tiếp",
     "about.title": "Chào mừng đến với thế giới của tôi",
     "about.intro": "Tôi là một <highlight>Developer</highlight> cho một agency.",
@@ -71,13 +69,6 @@ const dictionaries: Record<Language, Record<TranslationKey, string>> = {
     "about.years": "Năm Kinh Nghiệm",
     "about.projects": "Dự Án Hoàn Thành",
     "about.satisfaction": "Khách Hài Lòng",
-    "skills.title": "Kỹ năng & Chuyên môn",
-    "skills.all": "[Tất cả]",
-    "featured.title": "Sản phẩm nổi bật",
-    "featured.problem": "Vấn đề giải quyết:",
-    "featured.impact": "Tác động / Kết quả:",
-    "featured.demo": "Trải nghiệm Demo",
-    "featured.detail": "Xem chi tiết",
     "projects.title": "Dự án khác đã triển khai",
     "projects.detail": "Xem chi tiết",
     "experience.title": "Lịch sử Thực chiến",
@@ -102,16 +93,19 @@ const dictionaries: Record<Language, Record<TranslationKey, string>> = {
   },
   en: {
     "nav.about": "About",
-    "nav.skills": "Skills",
-    "nav.featured": "Featured",
+    "nav.services": "Services",
     "nav.projects": "Projects",
     "nav.experience": "Experience",
     "nav.contact": "Contact",
     "header.contact": "Contact now",
     "header.directContact": "Direct contact",
-    "hero.badge": "READY FOR AMBITIOUS DIGITAL PRODUCTS",
+    "hero.badge": "FRONTEND DEVELOPER / AUTOMATION BUILDER",
     "hero.greeting": "Hello, I am",
-    "hero.explore": "Explore products",
+    "hero.headline": "I build fast, scalable web products with polished UI and practical automation.",
+    "hero.description":
+      "I work across product UI, frontend architecture, API integration, and deployment to ship experiences that look sharp, perform well, and solve real operational needs.",
+    "hero.scroll": "Scroll",
+    "hero.explore": "Start a project",
     "hero.contact": "Direct contact",
     "about.title": "Welcome to my world",
     "about.intro": "I am a <highlight>Developer</highlight> for an agency.",
@@ -120,13 +114,6 @@ const dictionaries: Record<Language, Record<TranslationKey, string>> = {
     "about.years": "Years Experience",
     "about.projects": "Projects Completed",
     "about.satisfaction": "Client Satisfaction",
-    "skills.title": "Skills & Expertise",
-    "skills.all": "[All]",
-    "featured.title": "Featured Products",
-    "featured.problem": "Problem solved:",
-    "featured.impact": "Impact / Result:",
-    "featured.demo": "View Demo",
-    "featured.detail": "View details",
     "projects.title": "Other Delivered Projects",
     "projects.detail": "View details",
     "experience.title": "Practical Experience",
@@ -168,107 +155,73 @@ const profileCopy = {
   }
 };
 
+// English copy for the featured projects. Any Project field placed here overrides
+// the Vietnamese source in data/projects.ts when the language is set to EN.
 export const projectCopy = {
   en: {
-    "aistudio-maker": {
-      title: "AI Studio Custom Component Builder",
+    "miniapp-beautysummit-2026": {
+      title: "Beauty Summit 2026 Mini App",
       description:
-        "A visual tool that helps developers build and test custom widgets quickly with live preview and AI-assisted coding.",
-      role: "Full-stack Developer (Solo)",
-      category: "Developer Tool & AI Assistant",
-      client: "Nextgency Lab",
+        "A Zalo Mini App that brings a new dynamic to the beauty event. Through a quest-based points system where ticket holders collect points and redeem rewards, the app raises on-site engagement while driving revenue from VIP ticket packages. The point system is designed to be self-explanatory, so guests can join and claim rewards inside the Zalo app they already use, with no extra download.",
       overview: [
-        "The project shortens the component-building loop through a focused workspace where users can write code, preview results, and refine UI in one flow.",
-        "The workflow is optimized for rapid experimentation: users describe requirements, receive AI suggestions, fix syntax issues, and export clean code for React/Vite projects.",
-        "Its value comes from responsive testing, reusable component standards, and fewer repetitive steps when creating UI."
+        "To stay smooth in a crowded venue, the mini app was built mobile-first. We put particular care into a clear user-instruction flow paired with a simple UI, so attendees of any age can follow the steps to take part in the event.",
+        "The core loop is real-world gamification: attendees scan QR codes to check in at booths and follow the organiser's Zalo Official Account to collect points. These tasks digitise the whole guest journey, turning every step around the venue into a measurable touchpoint.",
+        "Collected points can be redeemed for physical gifts or VIP ticket upgrades. By building on the Zalo ecosystem, the solution both energises the floor during the event and lets the organiser gather a large base of quality user data for remarketing through the Zalo OA once the event is over."
       ],
-      features: [
-        "Live source editor with instant preview",
-        "AI suggestions for syntax fixes and performance improvements",
-        "Clean source export compatible with React/Vite",
-        "Responsive simulator for multi-device checks"
-      ],
+      client: "Beauty Summit",
       metrics: [
-        { label: "Prototype speed", value: "+70%" },
-        { label: "Syntax issues reduced", value: "-45%" },
-        { label: "Code export time", value: "< 1 min" }
-      ],
-      badge: "New Product"
+        { label: "Event engagement", value: "+65%" },
+        { label: "Zalo OA follows", value: "+500%" },
+        { label: "QR check-in scans", value: "> 4,000" }
+      ]
     },
-    fintrack: {
-      title: "FinTrack - Smart Expense Management",
+    srxvietnam: {
+      title: "SRX Vietnam Website",
       description:
-        "A self-contained personal finance system with visual charts to help users track spending and optimize cash flow.",
-      role: "Lead Frontend Developer",
-      category: "Finance Dashboard",
-      client: "Personal Product",
+        "A complete online cosmetics retail platform that optimises the B2C shopping experience while giving the operations team a capable admin toolset. The system centres on a smooth blend of online store, in-depth beauty blog, and affiliate network, creating multi-channel revenue growth.",
       overview: [
-        "FinTrack turns scattered income and expense records into a clear dashboard suitable for daily financial tracking.",
-        "The interface prioritizes quick scanning: period charts, spending categories, and saving-plan status are organized into one consistent view.",
-        "The project also focuses on local data privacy, allowing users to store records on device and export reports when needed."
+        "On the front end, the UI/UX is tailored to the beauty category, foregrounding product imagery, ingredients, and real reviews, with browsing and checkout streamlined as far as possible. The blog is structured for SEO and acts as a funnel that attracts prospects through skincare guides.",
+        "The technical centrepiece is the affiliate marketing system, planned and shipped end to end. The database is optimised to manage a large volume of discount codes, partner ad banners, and collaborator accounts. Account tiering and bulk status updates let the system calculate commission automatically, transparently, and accurately.",
+        "On the admin side, a dedicated CRM is integrated deep into the platform. The team can track stock, manage order status, and analyse sales performance per affiliate campaign in real time, so operational decisions rest on accurate data."
       ],
-      features: [
-        "Visual income and expense analytics by period",
-        "Saving-plan features based on spending habits",
-        "Accurate PDF and Excel financial reports",
-        "Local client-side data protection"
-      ],
+      client: "SRX Vietnam",
       metrics: [
-        { label: "Input speed", value: "+55%" },
-        { label: "Report cycle", value: "Monthly" },
-        { label: "Local data", value: "100%" }
-      ],
-      badge: "Popular"
+        { label: "New affiliates activated", value: "> 500" },
+        { label: "Affiliate revenue growth", value: "+45%" },
+        { label: "Cart abandonment rate", value: "-15%" }
+      ]
     },
-    socialhub: {
-      title: "SocialHub Live Collaboration",
+    topmus: {
+      title: "Topmus Website",
       description:
-        "A community feed and realtime collaboration workspace for developers to share and discuss ideas.",
-      role: "Full-stack Developer",
-      category: "Realtime Collaboration",
-      client: "Open Source Community",
+        "The project solves high-volume application handling by building a robust middleware layer. We focused on fully automating the data flow from the moment a candidate submits the form on the website until the information appears in the internal CRM, keeping the path seamless, secure, and able to carry complex file attachments.",
       overview: [
-        "SocialHub is a realtime collaboration space where users can exchange ideas, drag content, and discuss directly in one workflow.",
-        "The project focuses on low-latency group interaction while keeping the interface minimal enough for content-first collaboration.",
-        "The infrastructure is packaged for simple deployment, making it suitable for small teams that need a flexible private workspace."
+        "The main challenge was application forms that must transfer multimedia data accurately. To solve it, we developed and integrated the TOPMUS Middleware V2 solution as a dedicated WordPress plugin.",
+        "The system uses Fluent Forms to collect information on the front end. The core technical work is capturing and processing webhook streams, including restructuring payloads as multipart/form-data so CV files upload smoothly to the third-party server.",
+        "Once through the middleware layer, all data syncs automatically to the external CRM in real time. This removes manual data entry entirely, streamlines the HR team's workflow, and ensures no promising application is ever lost."
       ],
-      features: [
-        "Drag-and-drop shared workspace with latency under 50ms",
-        "Audio chat and direct file sharing",
-        "Docker packaging for easier infrastructure deployment",
-        "Dark theme designed for developer workflows"
-      ],
+      client: "TOPMUS Entertainment",
       metrics: [
-        { label: "Interaction latency", value: "< 50ms" },
-        { label: "Workspace", value: "Realtime" },
-        { label: "Deployment", value: "Docker" }
-      ],
-      badge: "Open Source"
+        { label: "Data flow automation", value: "100%" },
+        { label: "CV file sync speed", value: "< 2 seconds" },
+        { label: "Processing time saved", value: "+40 hrs/month" }
+      ]
     },
-    "speedrun-code": {
-      title: "SpeedRun Code Platform",
+    "eac-group": {
+      title: "EAC Group Automation & CRM Dashboard",
       description:
-        "A live coding challenge platform that helps developers improve algorithm skills through fast competitive matches.",
-      role: "Product Creator & Backend Dev",
-      category: "Coding Challenge Platform",
-      client: "Developer Community",
+        "An automation system and CRM dashboard for EAC Group that brings business, marketing, and operations data together in one place. The dataset-driven solution helps the management team track performance, control the pipeline, and make decisions on real-time data.",
       overview: [
-        "SpeedRun Code Platform creates a fast competitive programming experience where users solve problems, run test cases, and compare results in realtime.",
-        "The project encourages algorithm practice through matches, leaderboards, and immediate feedback after submissions.",
-        "The backend centers around an isolated runner sandbox to reduce execution risk when supporting multiple programming languages."
+        "The main goal was to standardise and centralise data from several sources — website, marketing, sales — into a single CRM dashboard that leadership can monitor and manage easily.",
+        "The dataset layer stores and syncs customer records, leads, sales activity, and marketing performance. Data updates automatically and is presented visually on the dashboard.",
+        "The automation layer cuts manual work by handling data updates, reporting, and daily, weekly, and monthly performance tracking on its own."
       ],
-      features: [
-        "Safe source execution through sandboxing",
-        "Realtime leaderboard updates",
-        "Automated multi-context test case generation",
-        "Integrated algorithm discussion under each challenge"
-      ],
+      client: "EAC Group",
       metrics: [
-        { label: "Leaderboard update", value: "Realtime" },
-        { label: "Runner sandbox", value: "Isolated" },
-        { label: "Test cases", value: "Automated" }
-      ],
-      badge: "Challenge"
+        { label: "Report compilation time", value: "-40%" },
+        { label: "Data accuracy", value: "+30%" },
+        { label: "Data processing efficiency", value: "+25%" }
+      ]
     }
   }
 } as const;

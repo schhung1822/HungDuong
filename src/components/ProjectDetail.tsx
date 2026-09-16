@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { projectsData } from "../data/projects";
 import { projectCopy, useLanguage } from "../i18n";
+import { pageContainer } from "./layout";
 
 interface ProjectDetailProps {
   projectId: string;
@@ -28,8 +29,9 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
 
   if (!project) {
     return (
-      <section className="min-h-screen bg-neutral-950 px-6 pb-20 pt-32">
-        <div className="mx-auto max-w-4xl rounded-2xl border border-neutral-900 bg-neutral-900/[0.14] p-8 text-center">
+      <section className="min-h-screen bg-neutral-950 pb-20 pt-32">
+        <div className={pageContainer}>
+          <div className="mx-auto max-w-4xl rounded-2xl border border-neutral-900 bg-neutral-900/[0.14] p-8 text-center">
           <p className="font-mono text-xs uppercase tracking-widest text-neutral-500">project_not_found</p>
           <h1 className="mt-4 font-sans text-3xl font-bold text-neutral-100">{t("project.notFound")}</h1>
           <button
@@ -40,6 +42,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
             <ArrowLeft className="h-4 w-4" />
             {t("project.back")}
           </button>
+          </div>
         </div>
       </section>
     );
@@ -57,8 +60,8 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-neutral-950 px-6 pb-20 pt-28 text-neutral-100">
-      <div className="relative mx-auto max-w-7xl">
+    <section className="relative min-h-screen overflow-hidden bg-neutral-950 pb-20 pt-28 text-neutral-100">
+      <div className={`${pageContainer} relative`}>
         <button
           type="button"
           onClick={handleBack}
@@ -180,7 +183,7 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {project.demoUrl !== "#" && (
+              {project.demoUrl && project.demoUrl !== "#" && (
                 <a
                   href={project.demoUrl}
                   target="_blank"
@@ -191,15 +194,17 @@ export default function ProjectDetail({ projectId }: ProjectDetailProps) {
                   <ExternalLink className="h-4 w-4" />
                 </a>
               )}
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950 px-5 font-sans text-sm font-bold text-neutral-300 transition-colors hover:border-neutral-500 hover:text-white"
-              >
-                <Github className="h-4 w-4" />
-                {t("project.source")}
-              </a>
+              {project.githubUrl && project.githubUrl !== "#" && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-800 bg-neutral-950 px-5 font-sans text-sm font-bold text-neutral-300 transition-colors hover:border-neutral-500 hover:text-white"
+                >
+                  <Github className="h-4 w-4" />
+                  {t("project.source")}
+                </a>
+              )}
             </div>
           </aside>
         </div>

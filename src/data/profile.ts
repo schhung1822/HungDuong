@@ -34,7 +34,7 @@ export interface Profile {
 
 export const profileData: Profile = {
   name: "HungDuong",
-  fullName: "Dương Mạnh Hùng",
+  fullName: "Duong Manh Hung",
   role: "Web Developer & Automation builder",
   shortDescription: "Tôi xây dựng các ứng dụng web hiện đại, tối ưu trải nghiệm người dùng bằng cách áp dụng thiết kế tinh tế kết hợp hiệu năng vượt trội và tư duy phát triển sản phẩm thực tế.",
   detailedAbout: "Tôi là một nhà phát triển phần mềm và nhà tạo lập sản phẩm nhiệt huyết. Tôi luôn giữ tư duy đặt người dùng làm trung tâm, từ khâu lên ý tưởng, thiết kế hệ thống tối ưu và lập trình giải pháp toàn diện. Với thế mạnh cả về Frontend, tôi chú trọng tối ưu trải nghiệm người dùng bằng cách áp dụng thiết kế tinh tế kết hợp hiệu năng vượt trội và giải quyết vấn đề của doanh nghiệp/cá nhân.",

@@ -3,14 +3,14 @@ import Header from "./components/Header";
 import Seo from "./components/Seo";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Skills from "./components/Skills";
-import FeaturedProduct from "./components/FeaturedProduct";
+import Services from "./components/Services";
 import Projects from "./components/Projects";
 import ProjectDetail from "./components/ProjectDetail";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import LanguageSwitcher from "./components/LanguageSwitcher";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   const [hash, setHash] = useState(window.location.hash);
@@ -39,8 +39,9 @@ export default function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  // overflow-x-clip (not hidden) so sticky children like the Experience rail keep working
   return (
-    <div className="relative min-h-screen bg-neutral-950 text-neutral-200 flex flex-col font-sans selection:bg-white selection:text-black overflow-x-hidden antialiased">
+    <div className="relative min-h-screen bg-neutral-950 text-neutral-200 flex flex-col font-sans overflow-x-clip antialiased">
 
       <Seo projectId={projectDetailMatch ? decodeURIComponent(projectDetailMatch[1]) : undefined} />
 
@@ -56,16 +57,13 @@ export default function App() {
             {/* Hero presentation space */}
             <Hero />
 
-            {/* Informational Profile Sections */}
+            {/* Combined profile and expertise section */}
             <About />
 
-            {/* Interactive Skills section */}
-            <Skills />
+            {/* Services and delivery approach */}
+            <Services />
 
-            {/* Flagship Product Segment */}
-            <FeaturedProduct />
-
-            {/* Interactive Grid Portfolio */}
+            {/* Featured projects and complete portfolio */}
             <Projects />
 
             {/* Professional Milestones */}
@@ -82,6 +80,9 @@ export default function App() {
 
       {/* Floating language toggle */}
       <LanguageSwitcher />
+
+      {/* Floating scroll-to-top with reading progress */}
+      <ScrollToTop />
     </div>
   );
 }

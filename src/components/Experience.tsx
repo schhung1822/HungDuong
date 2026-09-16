@@ -1,9 +1,13 @@
-import { Calendar, Briefcase, MapPin, CheckCircle, GraduationCap } from "lucide-react";
-import SectionTitle from "./SectionTitle";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Calendar, Check, GraduationCap, MapPin, Rocket, Workflow } from "lucide-react";
 import ScrollReveal from "./reactbits/ScrollReveal";
 import SpotlightCard from "./reactbits/SpotlightCard";
 import { experienceData } from "../data/experience";
 import { useLanguage } from "../i18n";
+import { pageContainer } from "./layout";
+import { pill, surface } from "./surface";
+
+const stageIcons = [Rocket, Workflow, GraduationCap];
 
 export default function Experience() {
   const { language, t } = useLanguage();
@@ -50,92 +54,225 @@ export default function Experience() {
           }
         ]
       : experienceData;
+
+  const copy =
+    language === "vi"
+      ? {
+          eyebrow: "KINH NGHIỆM / LỘ TRÌNH",
+          heading: "Từ website đầu tiên đến hệ thống vận hành thật.",
+          headingMuted: "Ba giai đoạn, mỗi năm một lớp năng lực mới.",
+          description:
+            "Mỗi mốc là một bước mở rộng: bắt đầu từ website giới thiệu, rồi đến workflow automation, CMS tùy chỉnh và mini app phục vụ sự kiện quy mô lớn.",
+          cta: "Bắt đầu dự án",
+          navLabel: "Chọn giai đoạn",
+          stages: ["HIỆN TẠI", "MỞ RỘNG", "KHỞI ĐẦU"]
+        }
+      : {
+          eyebrow: "EXPERIENCE / TIMELINE",
+          heading: "From a first website to systems that run real operations.",
+          headingMuted: "Three stages, one new capability layer each year.",
+          description:
+            "Every milestone added a layer: business websites first, then automation workflows, custom CMS platforms, and mini apps built for large-scale events.",
+          cta: "Start a project",
+          navLabel: "Pick a stage",
+          stages: ["NOW", "SCALE", "START"]
+        };
+
+  const [activeId, setActiveId] = useState(experiences[0].id);
+  const itemRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  // Keeps the sticky year switcher in sync with the milestone currently in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        const id = visible[0]?.target.getAttribute("data-exp-id");
+        if (id) setActiveId(id);
+      },
+      { rootMargin: "-25% 0px -55% 0px", threshold: 0 }
+    );
+
+    Object.values(itemRefs.current).forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, [language]);
+
+  const scrollToId = (id: string) => {
+    const target = itemRefs.current[id];
+    if (target) {
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 120, behavior: "smooth" });
+    }
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      window.scrollTo({ top: contactSection.offsetTop - 80, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section id="experience" className="py-20 bg-neutral-950 px-6 border-t border-neutral-900 scroll-mt-20 relative">
-      <div className="max-w-7xl mx-auto">
-        <SectionTitle 
-          number="05" 
-          title={t("experience.title")}
-          subtitle="career_pathweight" 
-        />
-
-        {/* Timeline container */}
-        <div className="relative border-l border-neutral-800 ml-4 md:ml-8 mt-12 space-y-12">
-          {experiences.map((exp, index) => (
-            <div key={exp.id} className="relative pl-8 md:pl-12 group">
-              {/* Timeline node */}
-              <span className="absolute left-0 top-1.5 -translate-x-[9px] w-4.5 h-4.5 rounded-full bg-neutral-950 border-2 border-neutral-700 flex items-center justify-center transition-all duration-300 group-hover:border-white group-hover:scale-110">
-                <span className="w-1.5 h-1.5 rounded-full bg-neutral-700 group-hover:bg-white transition-colors" />
-              </span>
-
-              {/* Timing label on floating style or inline for mobile layouts */}
-              <ScrollReveal origin="left" delay={50}>
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="flex items-center gap-1.5 font-mono text-xs text-neutral-200 px-2.5 py-1 rounded border border-neutral-800">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {exp.period}
+    <section
+      id="experience"
+      className="scroll-mt-20 border-t border-white/10 bg-neutral-950 py-20 text-white sm:py-28 lg:py-32"
+    >
+      <div className={pageContainer}>
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12 xl:gap-20">
+          {/* Sticky intro rail */}
+          <div className="lg:col-span-5 xl:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <ScrollReveal origin="left">
+                <div className="flex items-center gap-4 border-b border-white/10 pb-4">
+                  <span className="font-mono text-[10px] font-semibold tracking-[0.28em] text-neutral-500 sm:text-xs">
+                    04 / {copy.eyebrow}
                   </span>
-                  
-                  <span className="flex items-center gap-1 font-sans text-xs text-neutral-500">
-                    <MapPin className="w-3.5 h-3.5" />
-                    {exp.location}
-                  </span>
+                  <span className="h-px flex-1 bg-white/10" />
                 </div>
-              </ScrollReveal>
 
-              {/* Item main description wrapper */}
-              <ScrollReveal origin="bottom" delay={index * 100}>
-                <SpotlightCard className="p-6 md:p-8">
-                  <div className="space-y-4">
-                    {/* Header */}
-                    <div className="space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        {index === 3 ? (
-                          <GraduationCap className="w-5 h-5 text-neutral-400" />
-                        ) : (
-                          <Briefcase className="w-5 h-5 text-neutral-400" />
-                        )}
-                        <h4 className="font-sans text-lg sm:text-xl font-bold text-white leading-tight">
-                          {exp.role}
-                        </h4>
-                      </div>
-                      <p className="font-mono text-xs sm:text-sm text-neutral-400 font-semibold tracking-wide">
-                        @{exp.company}
-                      </p>
-                    </div>
+                {/* Year switcher, mirrors the section scroll position */}
+                <nav
+                  aria-label={copy.navLabel}
+                  className={`mt-8 inline-flex rounded-full p-1 ${surface}`}
+                >
+                  {experiences.map((exp) => {
+                    const isActive = exp.id === activeId;
 
-                    {/* Summary bio paragraph */}
-                    <p className="font-sans text-xs sm:text-sm text-neutral-400 leading-relaxed italic border-l-2 border-neutral-800 pl-3">
-                      {exp.description}
-                    </p>
+                    return (
+                      <button
+                        key={exp.id}
+                        type="button"
+                        aria-current={isActive}
+                        onClick={() => scrollToId(exp.id)}
+                        className={`rounded-full px-4 py-2 font-mono text-[11px] tracking-[0.12em] transition-colors sm:px-5 sm:text-xs ${
+                          isActive ? `text-white ${pill}` : "text-neutral-500 hover:text-neutral-200"
+                        }`}
+                      >
+                        {exp.period.slice(0, 4)}
+                      </button>
+                    );
+                  })}
+                </nav>
 
-                    {/* Accomplishments checklist */}
-                    <div className="space-y-2.5 pt-2">
-                      <p className="font-mono text-[10px] text-neutral-500 uppercase tracking-widest">{t("experience.achievements")}</p>
-                      {exp.highlights.map((hl, hlIdx) => (
-                        <div key={hlIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-neutral-400 font-sans leading-relaxed">
-                          <CheckCircle className="w-4 h-4 text-neutral-500 shrink-0 mt-0.5" />
-                          <span>{hl}</span>
-                        </div>
-                      ))}
-                    </div>
+                <h2 className="mt-8 text-balance font-sans text-[clamp(2.4rem,3.6vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.055em] text-white">
+                  {copy.heading}
+                  <span className="mt-3 block text-neutral-700">{copy.headingMuted}</span>
+                </h2>
 
-                    {/* Skills list tags */}
-                    <div className="flex flex-wrap gap-1.5 pt-3">
-                      {exp.skills.map((t) => (
-                        <span 
-                          key={t}
-                          className="px-2.5 py-0.5 rounded border border-neutral-800 text-neutral-400 font-mono text-[10px]"
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </SpotlightCard>
+                <p className="mt-7 max-w-md text-pretty text-sm leading-7 text-neutral-500 sm:text-base">
+                  {copy.description}
+                </p>
+
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className="group mt-9 inline-flex items-center gap-3 rounded-full bg-white px-5 py-3 text-xs font-bold text-black transition-colors hover:bg-neutral-200"
+                >
+                  {copy.cta}
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                </button>
               </ScrollReveal>
             </div>
-          ))}
+          </div>
+
+          {/* Milestone timeline */}
+          <div className="relative lg:col-span-7 xl:col-span-8">
+            {/* Timeline spine */}
+            <span
+              aria-hidden="true"
+              className="absolute bottom-10 left-[19px] top-3 w-px bg-linear-to-b from-white/20 via-white/10 to-transparent sm:left-[23px]"
+            />
+
+            <div className="space-y-16 sm:space-y-20">
+              {experiences.map((exp, index) => {
+                const StageIcon = stageIcons[index] ?? Rocket;
+                const isActive = exp.id === activeId;
+
+                return (
+                  <article
+                    key={exp.id}
+                    data-exp-id={exp.id}
+                    ref={(el) => {
+                      itemRefs.current[exp.id] = el;
+                    }}
+                    className="relative pl-14 sm:pl-[72px]"
+                  >
+                    {/* Timeline node */}
+                    <div className="absolute left-0 top-0 flex w-10 flex-col items-center sm:w-12">
+                      <span
+                        className={`grid h-10 w-10 place-items-center rounded-full border transition-colors duration-300 sm:h-12 sm:w-12 ${
+                          isActive
+                            ? "border-white bg-white text-black"
+                            : "border-white/10 bg-neutral-900 text-neutral-400"
+                        }`}
+                      >
+                        <StageIcon className="h-4 w-4 sm:h-5 sm:w-5" />
+                      </span>
+                      <span className="mt-2.5 font-mono text-[10px] text-neutral-600">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    <ScrollReveal origin="bottom" delay={index * 80}>
+                      <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-400">
+                        {copy.stages[index]}
+                      </span>
+
+                      <h3 className="mt-4 text-pretty text-2xl font-semibold leading-tight tracking-[-0.04em] text-white sm:text-3xl">
+                        {exp.role}
+                      </h3>
+
+                      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-[11px] text-neutral-500 sm:text-xs">
+                        <span className="text-neutral-300">@{exp.company}</span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <Calendar className="h-3.5 w-3.5" />
+                          {exp.period}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <MapPin className="h-3.5 w-3.5" />
+                          {exp.location}
+                        </span>
+                      </div>
+
+                      <p className="mt-5 max-w-3xl text-pretty text-sm leading-7 text-neutral-500">
+                        {exp.description}
+                      </p>
+
+                      {/* Padding only: SpotlightCard owns its radius, border and background */}
+                      <SpotlightCard className="mt-6 p-5 sm:p-7">
+                        <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-neutral-500">
+                          {t("experience.achievements")}
+                        </p>
+
+                        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                          {exp.highlights.map((highlight) => (
+                            <div key={highlight} className="flex gap-3">
+                              <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white text-black">
+                                <Check className="h-3 w-3" />
+                              </span>
+                              <p className="text-xs leading-6 text-neutral-400">{highlight}</p>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-7 flex flex-wrap gap-1.5 border-t border-white/10 pt-6">
+                          {exp.skills.map((skill) => (
+                            <span
+                              key={skill}
+                              className="rounded-full border border-white/10 px-3 py-1 font-mono text-[10px] text-neutral-400"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </SpotlightCard>
+                    </ScrollReveal>
+                  </article>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </section>
