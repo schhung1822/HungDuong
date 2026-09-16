@@ -80,8 +80,6 @@ export default function Projects() {
 
   const activeItem = featuredProjects[activeIndex] ?? featuredProjects[0];
   const activeProject = activeItem.project;
-  const categories = activeProject.category.split("/").map((category) => category.trim());
-  const caseStudyUrl = activeProject.demoUrl.trim();
 
   const showPrevious = () => {
     setActiveIndex((current) => (current - 1 + featuredProjects.length) % featuredProjects.length);
@@ -181,68 +179,94 @@ export default function Projects() {
                 aria-labelledby={`featured-project-tab-${activeItem.id}`}
                 className="relative mt-2 grid min-h-[520px] overflow-hidden rounded-2xl bg-[#f7f7f8] p-4 sm:mt-4 md:grid-cols-2"
               >
-                <div
-                  key={`content-${activeProject.id}`}
-                  className="project-content-swap flex min-w-0 flex-col p-1 sm:p-7 lg:p-10"
-                >
-                  <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-black/45 sm:text-xs">
-                    <span>{activeProject.client}</span>
-                    <span aria-hidden="true">·</span>
-                    <span>{activeProject.date}</span>
-                  </div>
+                {/*
+                  Every project's copy is stacked in the same grid cell with only the
+                  active one visible, so the panel always reserves the height of the
+                  longest project and never resizes when tabs change.
+                */}
+                <div className="grid min-w-0 p-1 sm:p-7 lg:p-10">
+                  {featuredProjects.map((item, itemIndex) => {
+                    const project = item.project;
+                    const isActive = itemIndex === activeIndex;
+                    const projectCategories = project.category
+                      .split("/")
+                      .map((category) => category.trim());
+                    const projectCaseStudyUrl = project.demoUrl.trim();
 
-                  <h3 className="mt-5 text-2xl font-bold leading-tight tracking-[-0.04em] text-black sm:text-3xl lg:text-4xl">
-                    {activeProject.title}
-                  </h3>
-                  <p className="mt-4 max-w-xl text-sm leading-7 text-black/60 sm:text-base">
-                    {activeProject.description}
-                  </p>
-
-                  <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-                    {activeProject.metrics.slice(0, 3).map((metric, index) => {
-                      const highlighted = index === 1;
-                      return (
-                        <div
-                          key={metric.label}
-                          className={`flex min-h-[104px] flex-col justify-between rounded-lg p-4 sm:min-h-[112px] ${
-                            highlighted
-                              ? "bg-neutral-950 text-white"
-                              : "border border-black/[0.06] bg-white text-black"
-                          } ${index === 2 ? "col-span-2 sm:col-span-1" : ""}`}
-                        >
-                          <span className={`text-[10px] leading-4 ${highlighted ? "text-white/75" : "text-black/50"}`}>
-                            {metric.label}
-                          </span>
-                          <strong className="text-xl tracking-[-0.04em] sm:text-2xl lg:text-3xl">{metric.value}</strong>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  <div className="mt-6 flex flex-wrap gap-2">
-                    {[...categories, ...activeProject.tech].slice(0, 5).map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-[10px] text-black/55 sm:text-xs"
+                    return (
+                      <div
+                        key={item.id}
+                        aria-hidden={!isActive}
+                        className={`col-start-1 row-start-1 flex min-w-0 flex-col ${
+                          isActive ? "project-content-swap" : "invisible"
+                        }`}
                       >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
+                        <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] font-medium uppercase tracking-[0.18em] text-black/45 sm:text-xs">
+                          <span>{project.client}</span>
+                          <span aria-hidden="true">·</span>
+                          <span>{project.date}</span>
+                        </div>
 
-                  {caseStudyUrl && (
-                    <a
-                      href={caseStudyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group mt-7 flex w-fit items-center gap-3 rounded-full bg-black py-1 pl-5 pr-1 text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.03]"
-                    >
-                      <span>{copy.detail}</span>
-                      <span className="grid h-9 w-9 place-items-center rounded-full bg-white">
-                        <ArrowUpRight className="h-4 w-4 text-black transition-transform duration-300 group-hover:rotate-12" />
-                      </span>
-                    </a>
-                  )}
+                        <h3 className="mt-5 text-2xl font-bold leading-tight tracking-[-0.04em] text-black sm:text-3xl lg:text-4xl">
+                          {project.title}
+                        </h3>
+                        <p className="mt-4 max-w-xl text-sm leading-7 text-black/60 sm:text-base">
+                          {project.description}
+                        </p>
+
+                        <div className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
+                          {project.metrics.slice(0, 3).map((metric, index) => {
+                            const highlighted = index === 1;
+                            return (
+                              <div
+                                key={metric.label}
+                                className={`flex min-h-[104px] flex-col justify-between rounded-lg p-4 sm:min-h-[112px] ${
+                                  highlighted
+                                    ? "bg-neutral-950 text-white"
+                                    : "border border-black/[0.06] bg-white text-black"
+                                } ${index === 2 ? "col-span-2 sm:col-span-1" : ""}`}
+                              >
+                                <span
+                                  className={`text-[10px] leading-4 ${highlighted ? "text-white/75" : "text-black/50"}`}
+                                >
+                                  {metric.label}
+                                </span>
+                                <strong className="text-xl tracking-[-0.04em] sm:text-2xl lg:text-3xl">
+                                  {metric.value}
+                                </strong>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <div className="mt-6 flex flex-wrap gap-2">
+                          {[...projectCategories, ...project.tech].slice(0, 5).map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full border border-black/10 bg-white px-3 py-1.5 text-[10px] text-black/55 sm:text-xs"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+
+                        {projectCaseStudyUrl && (
+                          <a
+                            href={projectCaseStudyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            tabIndex={isActive ? 0 : -1}
+                            className="group mt-7 flex w-fit items-center gap-3 rounded-full bg-black py-1 pl-5 pr-1 text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.03]"
+                          >
+                            <span>{copy.detail}</span>
+                            <span className="grid h-9 w-9 place-items-center rounded-full bg-white">
+                              <ArrowUpRight className="h-4 w-4 text-black transition-transform duration-300 group-hover:rotate-12" />
+                            </span>
+                          </a>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div
